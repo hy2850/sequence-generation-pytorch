@@ -8,7 +8,8 @@ Keras LSTM model to learn raw sine waves.
 
 Subtle changes on 'n_steps' and 'hid_dim' alters the fit of the model greatly
 -> must find a balance between bias (underfitting) and variance (overfitting)
-![[keras_sine_generation.png]]
+
+![](img/keras_sine_generation.png)
 
 <br/>
 
@@ -26,13 +27,15 @@ model with single LSTM layer + single FC layer seems to <span style="color:red">
 
 bigger hid_dim == more accurate the sequence generation
 (epoch 1000)
-![[pytorch_simpleseq_generation.png]]
-![[pytorch_simpleseq_loss.png]]
+
+![](img/pytorch_simpleseq_generation.png)
+![](img/pytorch_simpleseq_loss.png)
 
 around hid_dim 200 (left), generation accuracy is at tolerable level
-around 500 (right), maybe the model starts to <span style="color:hsl(210, 88%, 63%)"> overfit</span>
-![[pytorch_simpleseq_generation2.png]]
-![[pytorch_simpleseq_loss2.png]]
+around 500 (right), maybe the model starts to <span style="color:hsl(210, 88%, 63%)">overfit</span>
+
+![](img/pytorch_simpleseq_generation2.png)
+![](img/pytorch_simpleseq_loss2.png)
 
 
 -> add one more FC layer to incrase complexity? (**LSTM_2FC**)
@@ -47,24 +50,28 @@ Maybe another FC layer is an overkill for learning simple sequence data?
 (epoch 200, Grid-layout of hid_dim)
 
 prediction is pretty accurate.
-![[pytorch_sinewave_generation.png]]
-![[pytorch_sinewave_loss.png]]
+
+![](img/pytorch_sinewave_generation.png)
+![](img/pytorch_sinewave_loss.png)
 
 </br>
 
 2. Now, train sine wave with Gaussian noise 
 
 Training data
-![[noisy_sinewave.png]]
+
+![](img/noisy_sinewave.png)
 
 less accurate sine wave is generated now
 (single exp - epoch 200, hid_dim 50)
-![[noisy_sinewave_prediction.png]]
+
+![](img/noisy_sinewave_prediction.png)
 
 perhaps, more complex model is able to learn more complete sine wave from the noises?
 → Not really. Now, hid_dim 20 learns best
-![[noisy_sinewave_prediction2.png]]
-![[noisy_sinewave_loss2.png]]
+
+![](img/noisy_sinewave_prediction2.png)
+![](img/noisy_sinewave_loss2.png)
 
 </br>
 
@@ -75,7 +82,10 @@ perhaps, more complex model is able to learn more complete sine wave from the no
 * Train for **enough epochs** to reduce loss as low as possible
 * Using SGD gave flat-out result (underfitting perhaps)
 -> Changed to **Adam** to make model converge
-![[flat2.png]]![[flat1.png]]
+
+![](img/flat2.png)
+![](img/flat1.png)
+
 optimizer matters!
 
 * Additional hyperparameter tuning can be done in the similar way
